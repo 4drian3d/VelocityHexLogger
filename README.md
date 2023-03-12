@@ -1,6 +1,9 @@
 # VelocityHexLogger
+![WorkFlow](https://img.shields.io/github/actions/workflow/status/MiniPlaceholders/MiniPlaceholders/build.yml?style=flat-square)
+[![Discord](https://img.shields.io/discord/899740810956910683?color=7289da&label=Discord)](https://discord.gg/5NMMzK5mAn)
+![](https://img.shields.io/maven-central/v/io.github.4drian3d/velocityhexlogger?style=flat-square)
 
-Log Components into your Velocity console
+Log Components into your Velocity console with Hex Support
 
 ## Installation
 
@@ -27,7 +30,7 @@ tasks {
 ## Usage
 
 ```java
-
+@Plugin(id = "my-plugin")
 public class MyVelocityPlugin {
     private final ProxyServer proxyServer;
     private final HexLogger hexLogger;
@@ -40,7 +43,7 @@ public class MyVelocityPlugin {
     
     @Subscribe
     public void onProxyInitialization(ProxyInitializationEvent event) {
-        hexLogger.info(MiniMessage.miniMessage().deserialize("<rainbow>Started"));
+        hexLogger.info(MiniMessage.miniMessage().deserialize("<rainbow>Plugin Started"));
     }
 }
 
