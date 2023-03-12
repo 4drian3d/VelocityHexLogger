@@ -10,11 +10,16 @@ import org.slf4j.Marker;
 
 import static io.github._4drian3d.velocityhexlogger.LoggerProvider.convert;
 
+/**
+ * A Logger capable of Logging Components with Hexadecimal Color Support
+ */
 @SuppressWarnings("unused")
 public final class HexLogger implements ComponentLogger {
     @Inject
     @NotNull
     private Logger delegate;
+
+    private HexLogger() {}
 
     @Override
     public void trace(final @NotNull Component msg) {
