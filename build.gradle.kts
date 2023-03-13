@@ -1,8 +1,7 @@
 plugins {
     `java-library`
     alias(libs.plugins.shadow)
-    `maven-publish`
-    signing
+    alias(libs.plugins.indra)
 }
 
 repositories {
@@ -50,65 +49,28 @@ tasks {
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(11))
 
-/*
-publishing {
-    publications {
-        create<MavenPublication>("mavenJava") {
-            artifactId = "velocityhexlogger"
-            repositories {
-                maven {
-                    credentials(PasswordCredentials::class)
-                    val central = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
-                    val snapshots = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-                    if (project.version.toString().endsWith("SNAPSHOT")) {
-                        name = "SonatypeSnapshots"
-                        setUrl(snapshots)
-                    } else {
-                        name = "OSSRH"
-                        setUrl(central)
-                    }
+indra {
+    javaVersions {
+        testWith().add(11)
+    }
+    github("4drian3d", "VelocityHexLogger") {
+        ci(true)
+    }
+    publishReleasesTo("OSSRH", "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+    publishSnapshotsTo("SonatypeSnapshots",  "https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    gpl3OrLaterLicense()
+    configurePublications {
+        artifactId = "velocityhexlogger"
+        from(components["java"])
+
+        pom {
+            developers {
+                developer {
+                    id.set("4drian3d")
+                    name.set("Adrian Gonzales")
+                    email.set("adriangonzalesval@gmail.com")
                 }
-            }
-            from(components["java"])
-            pom {
-                url.set("https://github.com/4drian3d/VelocityHexLogger")
-                licenses {
-                    license {
-                        name.set("GNU General Public License version 3 or later")
-                        url.set("https://opensource.org/licenses/GPL-3.0")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:https://github.com/4drian3d/VelocityHexLogger.git")
-                    developerConnection.set("scm:git:ssh://git@github.com/4drian3d/VelocityHexLogger.git")
-                    url.set("https://github.com/4drian3d/VelocityHexLogger")
-                }
-                developers {
-                    developer {
-                        id.set("4drian3d")
-                        name.set("Adrian Gonzales")
-                        email.set("adriangonzalesval@gmail.com")
-                    }
-                }
-                issueManagement {
-                    name.set("GitHub")
-                    url.set("https://github.com/4drian3d/VelocityHexLogger/issues")
-                }
-                ciManagement {
-                    name.set("GitHub Actions")
-                    url.set("https://github.com/4drian3d/VelocityHexLogger/actions")
-                }
-                name.set(project.name)
-                description.set(project.description)
-                url.set("https://github.com/4drian3d/VelocityHexLogger")
             }
         }
     }
 }
-
-signing {
-    useGpgCmd()
-    sign(configurations.archives.get())
-    sign(publishing.publications["mavenJava"])
-}
-*/
