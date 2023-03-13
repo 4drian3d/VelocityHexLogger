@@ -1,5 +1,5 @@
 # VelocityHexLogger
-![WorkFlow](https://img.shields.io/github/actions/workflow/status/MiniPlaceholders/MiniPlaceholders/build.yml?style=flat-square)
+![WorkFlow](https://img.shields.io/github/actions/workflow/status/4drian3d/VelocityHexLogger/gradle.yml?style=flat-square)
 [![Discord](https://img.shields.io/discord/899740810956910683?color=7289da&label=Discord)](https://discord.gg/5NMMzK5mAn)
 ![](https://img.shields.io/maven-central/v/io.github.4drian3d/velocityhexlogger?style=flat-square)
 
@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.4drian3d:velocityhexlogger:1.0.0")
+    implementation("io.github.4drian3d:velocityhexlogger:1.0.1")
 }
 
 tasks {
@@ -46,5 +46,4 @@ public class MyVelocityPlugin {
         hexLogger.info(MiniMessage.miniMessage().deserialize("<rainbow>Plugin Started"));
     }
 }
-
 ```
