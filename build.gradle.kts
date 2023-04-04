@@ -1,6 +1,5 @@
 plugins {
     `java-library`
-    alias(libs.plugins.shadow)
     alias(libs.plugins.indra)
 }
 
@@ -10,7 +9,9 @@ repositories {
 
 dependencies {
     compileOnly(libs.velocity)
-    api(libs.adventure.logger)
+    api(libs.adventure.logger) {
+        isTransitive = false
+    }
     compileOnly(libs.terminalconsole)
 }
 
@@ -20,9 +21,6 @@ java {
 }
 
 tasks {
-    build {
-        dependsOn(shadowJar)
-    }
     compileJava {
         options.encoding = Charsets.UTF_8.name()
         options.release.set(11)
@@ -35,15 +33,6 @@ tasks {
             "https://www.slf4j.org/apidocs/",
             "https://docs.oracle.com/en/java/javase/11/docs/api/"
         )
-    }
-    shadowJar {
-        dependencies {
-            exclude(dependency("net.kyori:adventure-api:${libs.versions.adventure.get()}"))
-            exclude(dependency("net.kyori:adventure-key:${libs.versions.adventure.get()}"))
-            exclude(dependency("net.kyori:examination-api:1.3.0"))
-            exclude(dependency("net.kyori:examination-string:1.3.0"))
-            exclude(dependency("org.slf4j:slf4j-api:1.7.36"))
-        }
     }
 }
 
