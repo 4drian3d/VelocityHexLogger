@@ -19,8 +19,6 @@ public final class HexLogger implements ComponentLogger {
     @NotNull
     private Logger delegate;
 
-    private HexLogger() {}
-
     @Override
     public void trace(final @NotNull Component msg) {
         if (!isTraceEnabled()) return;
