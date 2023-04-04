@@ -3,14 +3,16 @@
 [![Discord](https://img.shields.io/discord/899740810956910683?color=7289da&label=Discord)](https://discord.gg/5NMMzK5mAn)
 ![](https://img.shields.io/maven-central/v/io.github.4drian3d/velocityhexlogger?style=flat-square)
 
-Log Components into your Velocity console with Hex Support
+Log Components into your Velocity console with HEX color support
+
+![](https://gyazo.com/4c7e86a2b98751952412a77fc7d48f7d.png)
 
 ## Installation
 
 ```kotlin
 plugins {
     java
-    id("com.github.johnrengelman.shadow:shadow") version "8.1.0"
+    id("com.github.johnrengelman.shadow:shadow") version "8.1.1"
 }
 
 repositories {
@@ -18,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation("io.github.4drian3d:velocityhexlogger:1.0.1")
+    implementation("io.github.4drian3d:velocityhexlogger:1.0.2")
 }
 
 tasks {
