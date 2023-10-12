@@ -7,6 +7,11 @@ Log Components into your Velocity console with HEX color support
 
 ![](https://gyazo.com/4c7e86a2b98751952412a77fc7d48f7d.png)
 
+# Archived
+The functionality of this library has already been implemented in Velocity directly
+
+See https://github.com/PaperMC/Velocity/pull/1022
+
 ## Installation
 
 ```kotlin
